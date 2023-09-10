@@ -31,24 +31,14 @@ export const Tweet: FC<TweetProps> = ({ tweet }) => {
     <>
       {images?.length ? (
         <div className={classes.root}>
-          <Avatar
-            src="https://sns-blog.tooooofu24.com/avatar.jpg"
-            alt="とーや"
-            size={35}
-            radius="xl"
-          />
+          <Avatar src="/avatar.jpg" alt="とーや" size={35} radius="xl" />
           <div style={{ flex: 1 }}>
             <Images images={images} />
           </div>
         </div>
       ) : null}
       <div className={classes.root}>
-        <Avatar
-          src="https://sns-blog.tooooofu24.com/avatar.jpg"
-          alt="とーや"
-          size={35}
-          radius="xl"
-        />
+        <Avatar src="/avatar.jpg" alt="とーや" size={35} radius="xl" />
         {text ? <Balloon text={text} createdAt={createdAt} /> : null}
       </div>
     </>
