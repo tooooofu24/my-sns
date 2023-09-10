@@ -1,0 +1,5 @@
+{
+  "language": "en,ja",
+  "ignorePaths": ["package.json", "package-lock.json"],
+  "words": ["mantine", "microcms"]
+}

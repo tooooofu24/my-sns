@@ -1,0 +1,5 @@
+{
+  "cSpell.words": ["corst"],
+  "typescript.preferences.importModuleSpecifier": "non-relative", // 相対インポートを禁止
+  "prettier.prettierPath": "./node_modules/prettier/index.cjs"
+}
