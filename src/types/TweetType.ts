@@ -1,6 +1,6 @@
 export type TweetType = {
   id: string;
-  text?: string;
+  text: string;
   images?: ImageType[];
   isReply?: boolean;
   createdAt: string;

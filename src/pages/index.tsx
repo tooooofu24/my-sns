@@ -25,6 +25,8 @@ const useStyles = createStyles((theme) => ({
     gap: theme.spacing.xs,
     paddingBottom: theme.spacing.sm,
     paddingTop: theme.spacing.sm,
+    paddingLeft: theme.spacing.xs,
+    paddingRight: theme.spacing.xs,
   },
 }));
 

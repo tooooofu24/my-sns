@@ -5,7 +5,6 @@ const useStyles = createStyles(() => ({
   root: {
     display: "flex",
     flexDirection: "column",
-    maxWidth: "75%",
   },
 
   balloon: {
@@ -23,6 +22,8 @@ const useStyles = createStyles(() => ({
   text: {
     width: "fit-content",
     whiteSpace: "pre-wrap",
+    wordWrap: "break-word",
+    wordBreak: "break-all",
   },
 
   textAlignRight: {
@@ -32,7 +33,6 @@ const useStyles = createStyles(() => ({
 
 type BalloonProps = {
   text: string;
-  createdAt: string;
   isReply?: boolean;
 };
 
@@ -41,7 +41,7 @@ export const Balloon: FC<BalloonProps> = ({ text, isReply }) => {
   return (
     <div className={classes.root}>
       <Paper
-        shadow="xs"
+        withBorder
         radius="md"
         p="sm"
         className={cx(
