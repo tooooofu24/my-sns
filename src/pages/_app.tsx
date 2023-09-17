@@ -1,4 +1,7 @@
 import "@/styles/global.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import { MantineProvider } from "@mantine/core";
 import { AppProps } from "next/app";
