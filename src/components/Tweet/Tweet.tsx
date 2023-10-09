@@ -1,6 +1,7 @@
 import { createStyles } from "@mantine/core";
 import { FC } from "react";
 
+import { DateComponent } from "@/components/Date";
 import { Balloon } from "@/components/Tweet/Balloon";
 import { Images } from "@/components/Tweet/Images";
 import { MyAvatar } from "@/components/Tweet/MyAvatar";
@@ -25,16 +26,18 @@ const useStyles = createStyles(() => ({
 
 type TweetProps = {
   tweet: TweetType;
+  showDate: boolean;
 };
 
-export const Tweet: FC<TweetProps> = ({ tweet }) => {
+export const Tweet: FC<TweetProps> = ({ tweet, showDate }) => {
   const { classes } = useStyles();
   const { text, createdAt, isReply, images } = tweet;
   if (isReply) {
-    return <Reply tweet={tweet} />;
+    return <Reply showDate={showDate} tweet={tweet} />;
   }
   return (
     <>
+      {showDate && <DateComponent time={new Date(createdAt)} />}
       {images?.length ? (
         <div className={classes.root}>
           <MyAvatar />
@@ -58,17 +61,20 @@ export const Tweet: FC<TweetProps> = ({ tweet }) => {
   );
 };
 
-const Reply: FC<TweetProps> = ({ tweet }) => {
+const Reply: FC<TweetProps> = ({ tweet, showDate }) => {
   const { classes } = useStyles();
   const { text, isReply, createdAt } = tweet;
   return (
-    <div>
-      <div className={classes.reply}>
-        <Time createdAt={createdAt} />
-        <div className={classes.content}>
-          <Balloon text={text ?? ""} isReply={isReply} />
+    <>
+      {showDate && <DateComponent time={new Date(createdAt)} />}
+      <div>
+        <div className={classes.reply}>
+          <Time createdAt={createdAt} />
+          <div className={classes.content}>
+            <Balloon text={text ?? ""} isReply={isReply} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
