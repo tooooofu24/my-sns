@@ -6,7 +6,7 @@ import {
   Text,
 } from "@mantine/core";
 import { FC } from "react";
-import { FaCircleCheck, FaCircleExclamation } from "react-icons/fa6";
+import { FaCircleCheck } from "react-icons/fa6";
 
 type SubmitModalProps = {
   isOpen: boolean;
@@ -57,16 +57,16 @@ const Success = () => {
   );
 };
 
-const Failed = () => {
-  const { classes } = useStyles();
-  return (
-    <Text>
-      <div className={`${classes.icon} ${classes.iconError}`}>
-        <FaCircleExclamation />
-      </div>
-      コメントの投稿に失敗しました🥺
-      <br />
-      陶也まで連絡してもらえると嬉しいです。
-    </Text>
-  );
-};
+// const Failed = () => {
+//   const { classes } = useStyles();
+//   return (
+//     <Text>
+//       <div className={`${classes.icon} ${classes.iconError}`}>
+//         <FaCircleExclamation />
+//       </div>
+//       コメントの投稿に失敗しました🥺
+//       <br />
+//       陶也まで連絡してもらえると嬉しいです。
+//     </Text>
+//   );
+// };

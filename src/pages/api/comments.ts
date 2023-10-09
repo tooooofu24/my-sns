@@ -5,7 +5,7 @@ import { API_KEY } from "@/config";
 
 const postHandler = async (
   req: NextApiRequest,
-  res: NextApiResponse<object>
+  res: NextApiResponse<object>,
 ) => {
   const { comment } = JSON.parse(req.body);
   if (!comment) {
