@@ -5,14 +5,14 @@ import Head from "next/head";
 import { useEffect, useRef } from "react";
 
 import { client } from "@/client";
-import { Footer, FOOTER_HEIGHT } from "@/components/Footer";
+import { Footer } from "@/components/Footer";
 import { Header, HEADER_HEIGHT } from "@/components/Header";
 import { Tweet } from "@/components/Tweet/Tweet";
 import { TweetType } from "@/types/TweetType";
 
 const useStyles = createStyles((theme) => ({
   main: {
-    paddingBottom: FOOTER_HEIGHT,
+    paddingBottom: HEADER_HEIGHT,
     paddingTop: HEADER_HEIGHT,
     minHeight: "100%",
   },
@@ -49,7 +49,10 @@ const Home: NextPage<HomeProps> = ({ tweets }) => {
           name="description"
           content="LINEのチャット風なブログ。誰でも匿名で返信ができます。"
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
 
         <meta property="og:url" content="https://toya-blog.vercel.app" />
         <meta property="og:title" content="千葉陶也 BLOG" />
