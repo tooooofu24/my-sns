@@ -46,7 +46,7 @@ export const Balloon: FC<BalloonProps> = ({ text, isReply }) => {
         p="sm"
         className={cx(
           classes.balloon,
-          isReply ? classes.balloonRight : classes.balloonLeft
+          isReply ? classes.balloonRight : classes.balloonLeft,
         )}
       >
         <Text fz="sm" className={classes.text}>
