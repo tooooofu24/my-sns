@@ -51,7 +51,7 @@ const Home: NextPage<HomeProps> = ({ tweets }) => {
         />
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1, viewport-fit=cover"
+          content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1.0"
         />
 
         <meta property="og:url" content="https://toya-blog.vercel.app" />
