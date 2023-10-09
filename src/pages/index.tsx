@@ -12,7 +12,7 @@ import { TweetType } from "@/types/TweetType";
 
 const useStyles = createStyles((theme) => ({
   main: {
-    paddingBottom: HEADER_HEIGHT,
+    paddingBottom: `calc(${HEADER_HEIGHT} + env(safe-area-inset-bottom))`,
     paddingTop: HEADER_HEIGHT,
     minHeight: "100%",
   },
