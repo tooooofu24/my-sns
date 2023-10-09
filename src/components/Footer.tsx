@@ -44,7 +44,14 @@ export function Footer() {
     mutate(comment);
   };
 
-  const { mutate, isLoading, isError } = useMutation(postComment);
+  const { mutate, isLoading } = useMutation(postComment, {
+    onError: () => {
+      close();
+      alert(
+        "コメントの投稿に失敗しました🥺\n陶也まで連絡してもらえると助かります！"
+      );
+    },
+  });
 
   return (
     <>
@@ -69,12 +76,7 @@ export function Footer() {
           </ActionIcon>
         </Container>
       </form>
-      <SubmitModal
-        isLoading={isLoading}
-        isOpen={isOpen}
-        onClose={close}
-        isError={isError}
-      />
+      <SubmitModal isLoading={isLoading} isOpen={isOpen} onClose={close} />
     </>
   );
 }

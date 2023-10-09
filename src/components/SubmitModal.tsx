@@ -12,7 +12,6 @@ type SubmitModalProps = {
   isOpen: boolean;
   onClose: () => void;
   isLoading: boolean;
-  isError: boolean;
 };
 
 const useStyles = createStyles((theme) => ({
@@ -32,12 +31,11 @@ export const SubmitModal: FC<SubmitModalProps> = ({
   isOpen,
   onClose,
   isLoading,
-  isError,
 }) => {
   return (
     <Modal opened={isOpen} onClose={onClose} centered withCloseButton={false}>
       <LoadingOverlay visible={isLoading} overlayBlur={100} />
-      {isError ? <Failed /> : <Success />}
+      <Success />
       <Button color="gray" ml="auto" display="block" onClick={onClose}>
         OK
       </Button>
