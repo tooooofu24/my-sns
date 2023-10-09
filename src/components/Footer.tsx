@@ -8,7 +8,6 @@ import { postComment } from "@/utils/postComment";
 
 const useStyles = createStyles(() => ({
   root: {
-    height: "fit-content",
     padding: "0.5rem",
     position: "fixed",
     bottom: 0,
@@ -16,6 +15,7 @@ const useStyles = createStyles(() => ({
     width: "100%",
     borderTop: "0.0625rem solid #e9ecef",
     backgroundColor: "#fff",
+    paddingBottom: "calc(0.5rem + env(safe-area-inset-bottom))",
   },
 
   footer: {
@@ -48,7 +48,7 @@ export function Footer() {
     onError: () => {
       close();
       alert(
-        "コメントの投稿に失敗しました🥺\n陶也まで連絡してもらえると助かります！",
+        "コメントの投稿に失敗しました🥺\n陶也まで連絡してもらえると助かります！"
       );
     },
   });
