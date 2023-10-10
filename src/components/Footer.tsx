@@ -42,6 +42,7 @@ export function Footer() {
     if (!comment) return;
     open();
     mutate(comment);
+    e.currentTarget.comment.value = "";
   };
 
   const { mutate, isLoading } = useMutation(postComment, {
