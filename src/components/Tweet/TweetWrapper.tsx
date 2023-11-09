@@ -1,17 +1,9 @@
-import { Container, Flex } from "@chakra-ui/react";
 import { ReactNode } from "react";
 
 export const TweetWrapper = ({ children }: { children: ReactNode }) => {
   return (
-    <Container
-      maxW="md"
-      paddingY="4rem"
-      paddingX={3}
-      paddingBottom="calc(4rem + env(safe-area-inset-bottom))"
-    >
-      <Flex direction="column" width="100%" gap={4}>
-        {children}
-      </Flex>
-    </Container>
+    <div className="container max-w-md px-3 py-16 mx-auto">
+      <div className="flex flex-col gap-4 w-full">{children}</div>
+    </div>
   );
 };

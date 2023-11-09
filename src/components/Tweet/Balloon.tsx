@@ -1,25 +1,27 @@
-import { Card, CardBody, Text } from "@chakra-ui/react";
+import clsx from "clsx";
 import { FC } from "react";
 
+import { MyAvatar } from "@/components/MyAvatar";
+import { TweetType } from "@/types/TweetType";
+
 type BalloonProps = {
-  text: string;
-  isReply?: boolean;
+  tweet: TweetType;
 };
 
-export const Balloon: FC<BalloonProps> = ({ text, isReply }) => {
+export const Balloon: FC<BalloonProps> = ({ tweet }) => {
+  const { text, isReply } = tweet;
   return (
-    <Card
-      variant="outline"
-      borderWidth={1}
-      borderRadius="0.5rem"
-      {...(!isReply && { borderTopLeftRadius: 0 })}
-      {...(isReply && { borderTopRightRadius: 0 })}
-    >
-      <CardBody padding={3}>
-        <Text fontSize="sm" whiteSpace="pre-wrap" wordBreak="break-all">
-          {text}
-        </Text>
-      </CardBody>
-    </Card>
+    <div className={clsx("chat", isReply ? "chat-end" : "chat-start")}>
+      {!isReply && (
+        <div className="chat-image avatar">
+          <div className="w-9 rounded-full">
+            <MyAvatar />
+          </div>
+        </div>
+      )}
+      <div className="chat-bubble flex items-center max-w-full">
+        <p className="whitespace-pre-wrap break-all text-sm">{text}</p>
+      </div>
+    </div>
   );
 };

@@ -1,4 +1,3 @@
-import { Flex } from "@chakra-ui/react";
 import { format } from "date-fns";
 import { ja } from "date-fns/locale";
 
@@ -15,11 +14,11 @@ export const Tweet = ({ tweet, showDate }: TweetProps) => {
   return (
     <>
       {showDate && (
-        <Flex justifyContent="center">
+        <div className="flex justify-center">
           <DateBadge>
             {format(new Date(tweet.createdAt), "M月d日(E)", { locale: ja })}
           </DateBadge>
-        </Flex>
+        </div>
       )}
       {!tweet.isReply && <MyTweet tweet={tweet} />}
       {tweet.isReply && <ReplyTweet tweet={tweet} />}
