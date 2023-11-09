@@ -4,9 +4,16 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import { ChakraProvider } from "@chakra-ui/react";
+import { M_PLUS_Rounded_1c } from "@next/font/google";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { QueryClient, QueryClientProvider } from "react-query";
+
+const mPlusRounded1c = M_PLUS_Rounded_1c({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  preload: true,
+});
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,7 +39,9 @@ export default function App(props: AppProps) {
 
       <ChakraProvider>
         <QueryClientProvider client={queryClient}>
-          <Component {...pageProps} />
+          <main className={mPlusRounded1c.className}>
+            <Component {...pageProps} />
+          </main>
         </QueryClientProvider>
       </ChakraProvider>
     </>

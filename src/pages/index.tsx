@@ -47,7 +47,7 @@ const Home: NextPage<HomeProps> = ({ tweets }) => {
         <meta property="og:site_name" content="千葉陶也 BLOG" />
         <meta property="og:locale" content="ja_JP" />
       </Head>
-      <main>
+      <>
         <Header />
         <TweetWrapper>
           <div />
@@ -61,7 +61,7 @@ const Home: NextPage<HomeProps> = ({ tweets }) => {
           <div ref={ref} />
         </TweetWrapper>
         <Footer />
-      </main>
+      </>
     </>
   );
 };
