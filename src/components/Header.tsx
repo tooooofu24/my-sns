@@ -12,7 +12,7 @@ export function Header() {
       zIndex={1}
     >
       <Container maxW="md" height="100%" display="flex" alignItems="center">
-        千葉陶也 BLOG
+        千葉陶也
       </Container>
     </Box>
   );

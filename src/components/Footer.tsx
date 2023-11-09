@@ -1,22 +1,36 @@
-import { Box, Container } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Flex,
+  IconButton,
+  Textarea,
+  useDisclosure,
+} from "@chakra-ui/react";
+import { FaPaperPlane } from "react-icons/fa6";
+import { useMutation } from "react-query";
+
+import { SuccessModal } from "@/components/SuccessModal";
+import { postComment } from "@/utils/postComment";
 
 export function Footer() {
-  // const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   const comment = e.currentTarget.comment.value;
-  //   if (!comment) return;
-  //   mutate(comment);
-  //   e.currentTarget.comment.value = "";
-  // };
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-  // const { mutate, isLoading } = useMutation(postComment, {
-  //   onError: () => {
-  //     close();
-  //     alert(
-  //       "コメントの投稿に失敗しました🥺\n陶也まで連絡してもらえると助かります！"
-  //     );
-  //   },
-  // });
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const comment = e.currentTarget.comment.value;
+    if (!comment) return;
+    mutate(comment);
+    e.currentTarget.comment.value = "";
+  };
+
+  const { mutate, isLoading } = useMutation(postComment, {
+    onSuccess: () => onOpen(),
+    onError: () => {
+      alert(
+        "コメントの投稿に失敗しました🥺\n陶也まで連絡してもらえると助かります！"
+      );
+    },
+  });
 
   return (
     <>
@@ -29,11 +43,35 @@ export function Footer() {
         position="fixed"
         backgroundColor="white"
         zIndex={1}
+        as="form"
+        onSubmit={onSubmit}
       >
-        <Container maxW="md" height="100%" display="flex" alignItems="center">
-          千葉陶也 BLOG
+        <Container
+          px={2}
+          maxW="md"
+          height="100%"
+          display="flex"
+          alignItems="center"
+        >
+          <Flex gap={2} width="100%">
+            <Textarea
+              placeholder="匿名でコメントできます！"
+              rows={1}
+              flex={1}
+              name="comment"
+            />
+            <IconButton
+              type="submit"
+              variant="solid"
+              aria-label="送信"
+              icon={<FaPaperPlane />}
+              isRound
+              isLoading={isLoading}
+            />
+          </Flex>
         </Container>
       </Box>
+      <SuccessModal isOpen={isOpen} onClose={onClose} />
     </>
   );
 }

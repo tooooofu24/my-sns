@@ -1,11 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { ApiError } from "next/dist/server/api-utils";
 
-import { API_KEY } from "@/config";
+import { API_KEY, LINE_API_KEY } from "@/config";
 
 const postHandler = async (
   req: NextApiRequest,
-  res: NextApiResponse<object>,
+  res: NextApiResponse<object>
 ) => {
   const { comment } = JSON.parse(req.body);
   if (!comment) {
@@ -22,6 +22,21 @@ const postHandler = async (
       isReply: true,
     }),
   });
+
+  const body = new URLSearchParams({
+    message: "\nブログにコメントがつきました！",
+  }).toString();
+  const response = await fetch("https://notify-api.line.me/api/notify", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: `Bearer ${LINE_API_KEY}`,
+    },
+    body,
+  });
+  const json = await response.json();
+  if (json.status !== 200) throw new ApiError(json.status, json.message);
+
   res.status(200).json({ message: "success" });
 };
 

@@ -4,12 +4,12 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import { ChakraProvider } from "@chakra-ui/react";
-import { M_PLUS_Rounded_1c } from "@next/font/google";
+import { IBM_Plex_Sans_JP } from "@next/font/google";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-const mPlusRounded1c = M_PLUS_Rounded_1c({
+const font = IBM_Plex_Sans_JP({
   subsets: ["latin"],
   weight: ["400", "700"],
   preload: true,
@@ -39,7 +39,7 @@ export default function App(props: AppProps) {
 
       <ChakraProvider>
         <QueryClientProvider client={queryClient}>
-          <main className={mPlusRounded1c.className}>
+          <main className={font.className}>
             <Component {...pageProps} />
           </main>
         </QueryClientProvider>
