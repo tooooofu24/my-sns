@@ -10,6 +10,8 @@ export const Balloon: FC<BalloonProps> = ({ text, isReply }) => {
   return (
     <Card
       variant="outline"
+      borderWidth={1}
+      borderRadius="0.5rem"
       {...(!isReply && { borderTopLeftRadius: 0 })}
       {...(isReply && { borderTopRightRadius: 0 })}
     >

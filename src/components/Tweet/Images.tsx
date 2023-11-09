@@ -7,12 +7,12 @@ import { ImageType } from "@/types/TweetType";
 
 export const Images = ({ images }: { images: ImageType[] }) => {
   const repeat = images.length >= 3 ? 3 : 2;
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onClose } = useDisclosure();
   const [imageIndex, setImageIndex] = useState(0);
 
   const onClick = (index: number) => {
     setImageIndex(index);
-    onOpen();
+    // onOpen();
   };
 
   return (

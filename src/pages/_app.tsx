@@ -3,7 +3,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraBaseProvider, extendBaseTheme } from "@chakra-ui/react";
+import { Button, Container, Tag } from "@chakra-ui/theme/components";
 import { AppProps } from "next/app";
 import { IBM_Plex_Sans_JP } from "next/font/google";
 import Head from "next/head";
@@ -24,6 +25,14 @@ const queryClient = new QueryClient({
   },
 });
 
+const theme = extendBaseTheme({
+  components: {
+    Button,
+    Container,
+    Tag,
+  },
+});
+
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
 
@@ -37,13 +46,13 @@ export default function App(props: AppProps) {
         />
       </Head>
 
-      <ChakraProvider>
+      <ChakraBaseProvider theme={theme}>
         <QueryClientProvider client={queryClient}>
           <main className={font.className}>
             <Component {...pageProps} />
           </main>
         </QueryClientProvider>
-      </ChakraProvider>
+      </ChakraBaseProvider>
     </>
   );
 }
