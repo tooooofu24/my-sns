@@ -3,3 +3,13 @@ body,
 #__next {
   height: 100%;
 }
+
+.swiper-slide {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.swiper-wrapper {
+  align-items: center;
+}

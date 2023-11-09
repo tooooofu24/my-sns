@@ -11,6 +11,12 @@ import { TweetType } from "@/types/TweetType";
 export const MyTweet = ({ tweet }: { tweet: TweetType }) => {
   return (
     <Flex flexDir="column" gap={2}>
+      {tweet.images?.length ? (
+        <Flex gap={2}>
+          <MyAvatar />
+          <Images images={tweet.images} />
+        </Flex>
+      ) : null}
       <Flex gap={2}>
         <MyAvatar />
         <Box maxW="70%">
@@ -22,7 +28,6 @@ export const MyTweet = ({ tweet }: { tweet: TweetType }) => {
           </Time>
         </Flex>
       </Flex>
-      {tweet.images?.length ? <Images images={tweet.images} /> : null}
     </Flex>
   );
 };
