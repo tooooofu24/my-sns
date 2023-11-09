@@ -3,7 +3,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import { MantineProvider } from "@mantine/core";
+import { ChakraProvider } from "@chakra-ui/react";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -30,18 +30,11 @@ export default function App(props: AppProps) {
         />
       </Head>
 
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-        theme={{
-          /** Put your mantine theme override here */
-          colorScheme: "light",
-        }}
-      >
+      <ChakraProvider>
         <QueryClientProvider client={queryClient}>
           <Component {...pageProps} />
         </QueryClientProvider>
-      </MantineProvider>
+      </ChakraProvider>
     </>
   );
 }

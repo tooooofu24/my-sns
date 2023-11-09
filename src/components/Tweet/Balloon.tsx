@@ -1,35 +1,5 @@
-import { createStyles, Paper, Text } from "@mantine/core";
+import { Card, CardBody, Text } from "@chakra-ui/react";
 import { FC } from "react";
-
-const useStyles = createStyles(() => ({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-  },
-
-  balloon: {
-    width: "fit-content",
-  },
-
-  balloonLeft: {
-    borderTopLeftRadius: 0,
-  },
-
-  balloonRight: {
-    borderTopRightRadius: 0,
-  },
-
-  text: {
-    width: "fit-content",
-    whiteSpace: "pre-wrap",
-    wordWrap: "break-word",
-    wordBreak: "break-all",
-  },
-
-  textAlignRight: {
-    textAlign: "right",
-  },
-}));
 
 type BalloonProps = {
   text: string;
@@ -37,22 +7,17 @@ type BalloonProps = {
 };
 
 export const Balloon: FC<BalloonProps> = ({ text, isReply }) => {
-  const { classes, cx } = useStyles();
   return (
-    <div className={classes.root}>
-      <Paper
-        withBorder
-        radius="md"
-        p="sm"
-        className={cx(
-          classes.balloon,
-          isReply ? classes.balloonRight : classes.balloonLeft,
-        )}
-      >
-        <Text fz="sm" className={classes.text}>
+    <Card
+      variant="outline"
+      {...(!isReply && { borderTopLeftRadius: 0 })}
+      {...(isReply && { borderTopRightRadius: 0 })}
+    >
+      <CardBody padding={3}>
+        <Text fontSize="sm" whiteSpace="pre-wrap" wordBreak="break-all">
           {text}
         </Text>
-      </Paper>
-    </div>
+      </CardBody>
+    </Card>
   );
 };

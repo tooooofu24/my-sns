@@ -1,35 +1,14 @@
-import { Container, createStyles } from "@mantine/core";
 import { format } from "date-fns";
 import { NextPage } from "next";
 import Head from "next/head";
 import { useEffect, useRef } from "react";
 
-import { client } from "@/client";
 import { Footer } from "@/components/Footer";
-import { Header, HEADER_HEIGHT } from "@/components/Header";
+import { Header } from "@/components/Header";
 import { Tweet } from "@/components/Tweet/Tweet";
+import { TweetWrapper } from "@/components/Tweet/TweetWrapper";
 import { TweetType } from "@/types/TweetType";
-
-const useStyles = createStyles((theme) => ({
-  main: {
-    paddingBottom: `calc(${HEADER_HEIGHT} + env(safe-area-inset-bottom))`,
-    paddingTop: HEADER_HEIGHT,
-    minHeight: "100%",
-  },
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "end",
-    height: "100%",
-    width: "100%",
-    maxWidth: 500,
-    gap: theme.spacing.xs,
-    paddingBottom: theme.spacing.sm,
-    paddingTop: theme.spacing.sm,
-    paddingLeft: theme.spacing.xs,
-    paddingRight: theme.spacing.xs,
-  },
-}));
+import { fakeTweets } from "@/utils/tweets";
 
 type HomeProps = {
   tweets: TweetType[];
@@ -37,10 +16,10 @@ type HomeProps = {
 
 const Home: NextPage<HomeProps> = ({ tweets }) => {
   const ref = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     ref?.current?.scrollIntoView();
   }, []);
-  const { classes } = useStyles();
   return (
     <>
       <Head>
@@ -67,9 +46,9 @@ const Home: NextPage<HomeProps> = ({ tweets }) => {
         <meta property="og:site_name" content="千葉陶也 BLOG" />
         <meta property="og:locale" content="ja_JP" />
       </Head>
-      <main className={classes.main}>
+      <main>
         <Header />
-        <Container className={classes.container}>
+        <TweetWrapper>
           {tweets.map((tweet, i) => {
             const current = new Date(tweet.createdAt);
             const prev = new Date(tweets[i - 1]?.createdAt ?? null);
@@ -77,8 +56,8 @@ const Home: NextPage<HomeProps> = ({ tweets }) => {
               format(current, "yyyy-MM-dd") != format(prev, "yyyy-MM-dd");
             return <Tweet key={tweet.id} tweet={tweet} showDate={showDate} />;
           })}
-        </Container>
-        <div ref={ref} />
+          <div ref={ref} />
+        </TweetWrapper>
         <Footer />
       </main>
     </>
@@ -87,14 +66,14 @@ const Home: NextPage<HomeProps> = ({ tweets }) => {
 
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async () => {
-  const data = await client.get({
-    endpoint: "tweets",
-    queries: { orders: "createdAt", limit: 100 },
-  });
+  // const data = await client.get({
+  //   endpoint: "tweets",
+  //   queries: { orders: "createdAt", limit: 100 },
+  // });
 
   return {
     props: {
-      tweets: data.contents,
+      tweets: fakeTweets,
     },
   };
 };
