@@ -36,8 +36,8 @@ export function Footer() {
     <>
       <Box
         width="100%"
-        height={16}
         bottom={0}
+        paddingY="0.75rem"
         borderTop="1px"
         borderTopColor="gray.200"
         position="fixed"
@@ -45,7 +45,7 @@ export function Footer() {
         zIndex={1}
         as="form"
         onSubmit={onSubmit}
-        paddingBottom="env(safe-area-inset-bottom)"
+        paddingBottom="calc(0.75rem + env(safe-area-inset-bottom))"
       >
         <Container
           px={2}
