@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 
 export const TweetWrapper = ({ children }: { children: ReactNode }) => {
   return (
-    <Container paddingY={16} paddingX={3}>
+    <Container maxW="md" paddingY={16} paddingX={3}>
       <Flex direction="column" width="100%" gap={4}>
         {children}
       </Flex>

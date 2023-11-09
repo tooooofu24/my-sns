@@ -30,7 +30,7 @@ export function Footer() {
         backgroundColor="white"
         zIndex={1}
       >
-        <Container height="100%" display="flex" alignItems="center">
+        <Container maxW="md" height="100%" display="flex" alignItems="center">
           千葉陶也 BLOG
         </Container>
       </Box>
