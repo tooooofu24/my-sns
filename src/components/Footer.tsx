@@ -17,8 +17,10 @@ export function Footer() {
   // });
 
   return (
-    <div className="fixed bottom-0 w-full border-t h-12 bg-white">
-      <div className="container max-w-md mx-auto">ああ</div>
+    <div className="navbar bottom-0 fixed bg-base-100 z-10">
+      <div className="container max-w-md mx-auto">
+        <a className="btn btn-ghost normal-case text-xl">千葉陶也</a>
+      </div>
     </div>
   );
 }
