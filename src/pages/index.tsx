@@ -3,12 +3,12 @@ import { NextPage } from "next";
 import Head from "next/head";
 import { useEffect, useRef } from "react";
 
+import { client } from "@/client";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Tweet } from "@/components/Tweet/Tweet";
 import { TweetWrapper } from "@/components/Tweet/TweetWrapper";
 import { TweetType } from "@/types/TweetType";
-import { fakeTweets } from "@/utils/tweets";
 
 type HomeProps = {
   tweets: TweetType[];
@@ -68,14 +68,14 @@ const Home: NextPage<HomeProps> = ({ tweets }) => {
 
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async () => {
-  // const data = await client.get({
-  //   endpoint: "tweets",
-  //   queries: { orders: "createdAt", limit: 100 },
-  // });
+  const data = await client.get({
+    endpoint: "tweets",
+    queries: { orders: "createdAt", limit: 100 },
+  });
 
   return {
     props: {
-      tweets: fakeTweets,
+      tweets: data.contents,
     },
   };
 };
