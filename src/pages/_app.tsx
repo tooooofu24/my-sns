@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import { AppProps } from "next/app";
 import { IBM_Plex_Sans_JP } from "next/font/google";
 import Head from "next/head";
+import { ThemeProvider } from "next-themes";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 const font = IBM_Plex_Sans_JP({
@@ -37,9 +38,11 @@ export default function App(props: AppProps) {
       </Head>
 
       <QueryClientProvider client={queryClient}>
-        <main className={font.className}>
-          <Component {...pageProps} />
-        </main>
+        <ThemeProvider attribute="class">
+          <main className={font.className}>
+            <Component {...pageProps} />
+          </main>
+        </ThemeProvider>
       </QueryClientProvider>
     </>
   );
