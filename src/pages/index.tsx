@@ -20,6 +20,7 @@ const Home: NextPage<HomeProps> = ({ tweets }) => {
   useEffect(() => {
     ref?.current?.scrollIntoView();
   }, []);
+
   return (
     <>
       <Head>
@@ -49,6 +50,7 @@ const Home: NextPage<HomeProps> = ({ tweets }) => {
       <main>
         <Header />
         <TweetWrapper>
+          <div />
           {tweets.map((tweet, i) => {
             const current = new Date(tweet.createdAt);
             const prev = new Date(tweets[i - 1]?.createdAt ?? null);
