@@ -12,8 +12,12 @@ export const ThemeButton = memo(() => {
   }
 
   return (
-    <label className="swap swap-flip">
-      <input type="checkbox" />
+    <label
+      className="swap swap-flip"
+      aria-label="ダークモード"
+      id="ダークモード"
+    >
+      <input type="checkbox" aria-labelledby="ダークモード" />
       <svg
         className="fill-current w-10 h-10 swap-on"
         xmlns="http://www.w3.org/2000/svg"

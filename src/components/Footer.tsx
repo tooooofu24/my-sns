@@ -33,7 +33,11 @@ export function Footer() {
             rows={1}
             name="comment"
           ></textarea>
-          <button type="submit" className="btn btn-ghost btn-circle text-lg">
+          <button
+            type="submit"
+            className="btn btn-ghost btn-circle text-lg"
+            aria-label="送信ボタン"
+          >
             {isLoading && <span className="loading loading-spinner"></span>}
             {!isLoading && <FaPaperPlane />}
           </button>
