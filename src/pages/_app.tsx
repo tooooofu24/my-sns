@@ -4,8 +4,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import { ChakraProvider } from "@chakra-ui/react";
-import { IBM_Plex_Sans_JP } from "@next/font/google";
 import { AppProps } from "next/app";
+import { IBM_Plex_Sans_JP } from "next/font/google";
 import Head from "next/head";
 import { QueryClient, QueryClientProvider } from "react-query";
 
