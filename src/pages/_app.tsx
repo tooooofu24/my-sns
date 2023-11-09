@@ -1,7 +1,4 @@
 import "@/styles/global.css";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 
 import { AppProps } from "next/app";
 import { IBM_Plex_Sans_JP } from "next/font/google";
