@@ -45,6 +45,7 @@ export function Footer() {
         zIndex={1}
         as="form"
         onSubmit={onSubmit}
+        paddingBottom="env(safe-area-inset-bottom)"
       >
         <Container
           px={2}
