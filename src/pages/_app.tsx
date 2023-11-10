@@ -3,8 +3,9 @@ import "@/styles/global.css";
 import { AppProps } from "next/app";
 import { IBM_Plex_Sans_JP } from "next/font/google";
 import Head from "next/head";
-import { ThemeProvider } from "next-themes";
 import { QueryClient, QueryClientProvider } from "react-query";
+
+import { Provider } from "@/components/Provider";
 
 const font = IBM_Plex_Sans_JP({
   subsets: ["latin"],
@@ -35,11 +36,11 @@ export default function App(props: AppProps) {
       </Head>
 
       <QueryClientProvider client={queryClient}>
-        <ThemeProvider attribute="class">
+        <Provider>
           <main className={font.className}>
             <Component {...pageProps} />
           </main>
-        </ThemeProvider>
+        </Provider>
       </QueryClientProvider>
     </>
   );

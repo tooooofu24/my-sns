@@ -9,6 +9,7 @@ import { Header } from "@/components/Header";
 import { Tweet } from "@/components/Tweet/Tweet";
 import { TweetWrapper } from "@/components/Tweet/TweetWrapper";
 import { TweetType } from "@/types/TweetType";
+import { fakeTweets } from "@/utils/fakeTweets";
 
 type HomeProps = {
   tweets: TweetType[];
@@ -68,6 +69,14 @@ const Home: NextPage<HomeProps> = ({ tweets }) => {
 
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async () => {
+  if (process.env.ENV === "local") {
+    return {
+      props: {
+        tweets: fakeTweets,
+      },
+    };
+  }
+
   const data = await client.get({
     endpoint: "tweets",
     queries: { orders: "createdAt", limit: 100 },

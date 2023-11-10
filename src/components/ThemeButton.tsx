@@ -1,15 +1,20 @@
+import { useTheme } from "next-themes";
 import { memo, useEffect, useState } from "react";
 
 export const ThemeButton = memo(() => {
+  const { theme, setTheme } = useTheme();
+
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  if (!mounted) {
-    return null;
-  }
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTheme(e.target.checked ? "light" : "dark");
+  };
+
+  if (!mounted) return null;
 
   return (
     <label
@@ -17,7 +22,12 @@ export const ThemeButton = memo(() => {
       aria-label="ダークモード"
       id="ダークモード"
     >
-      <input type="checkbox" aria-labelledby="ダークモード" />
+      <input
+        type="checkbox"
+        aria-labelledby="ダークモード"
+        onChange={onChange}
+        defaultChecked={theme === "light"}
+      />
       <svg
         className="fill-current w-10 h-10 swap-on"
         xmlns="http://www.w3.org/2000/svg"
