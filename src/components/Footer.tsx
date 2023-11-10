@@ -35,11 +35,11 @@ export function Footer() {
           ></textarea>
           <button
             type="submit"
-            className="btn btn-ghost btn-circle text-lg"
+            className="btn btn-ghost btn-circle"
             aria-label="送信ボタン"
           >
             {isLoading && <span className="loading loading-spinner"></span>}
-            {!isLoading && <FaPaperPlane />}
+            {!isLoading && <FaPaperPlane className="h-5 w-5" />}
           </button>
         </form>
       </div>
