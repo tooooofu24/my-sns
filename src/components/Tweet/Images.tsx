@@ -1,11 +1,16 @@
 import clsx from "clsx";
 import Image from "next/image";
+import { useCallback, useRef } from "react";
 
+import { ImageModal } from "@/components/Tweet/ImageModal";
 import { ImageType } from "@/types/TweetType";
 
 export const Images = ({ images }: { images: ImageType[] }) => {
   const gridCols = images.length >= 3 ? "grid-cols-3" : "grid-cols-2";
-
+  const ref = useRef<HTMLDialogElement>(null);
+  const handleShow = useCallback(() => {
+    ref.current?.showModal();
+  }, [ref]);
   return (
     <>
       <div className={clsx("grid gap-1", gridCols)}>
@@ -20,9 +25,11 @@ export const Images = ({ images }: { images: ImageType[] }) => {
               borderRadius: "0.35rem",
             }}
             className="cursor-pointer w-full aspect-[1/1] object-cover"
+            onClick={handleShow}
           />
         ))}
       </div>
+      <ImageModal ref={ref} images={images} />
     </>
   );
 };
