@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import { ja } from "date-fns/locale";
+import { Badge } from "react-daisyui";
 
-import { DateBadge } from "@/components/Tweet/DateBadge";
 import { MyTweet } from "@/components/Tweet/MyTweet";
 import { ReplyTweet } from "@/components/Tweet/ReplyTweet";
 import { TweetType } from "@/types/TweetType";
@@ -15,9 +15,9 @@ export const Tweet = ({ tweet, showDate }: TweetProps) => {
     <>
       {showDate && (
         <div className="flex justify-center">
-          <DateBadge>
+          <Badge>
             {format(new Date(tweet.createdAt), "M月d日(E)", { locale: ja })}
-          </DateBadge>
+          </Badge>
         </div>
       )}
       {!tweet.isReply && <MyTweet tweet={tweet} />}

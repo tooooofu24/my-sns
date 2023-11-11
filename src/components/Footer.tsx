@@ -1,10 +1,12 @@
+import { memo } from "react";
+import { Button, Textarea } from "react-daisyui";
 import { FaPaperPlane } from "react-icons/fa6";
 import { useMutation } from "react-query";
 
 import { postComment } from "@/utils/postComment";
 
-export function Footer() {
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+export const Footer = memo(() => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const comment = e.currentTarget.comment.value;
     if (!comment) return;
@@ -27,22 +29,25 @@ export function Footer() {
     <div className="navbar bottom-0 fixed bg-base-100 z-10">
       <div className="container max-w-md mx-auto">
         <form className="flex w-full gap-1 items-center" onSubmit={onSubmit}>
-          <textarea
-            className="textarea textarea-bordered flex-1"
+          <Textarea
+            bordered
+            className="flex-1"
             placeholder="匿名でコメントできます！"
             rows={1}
             name="comment"
-          ></textarea>
-          <button
+            disabled={isLoading}
+          ></Textarea>
+          <Button
+            className="btn-ghost"
+            shape="circle"
             type="submit"
-            className="btn btn-ghost btn-circle"
             aria-label="送信ボタン"
+            loading={isLoading}
           >
-            {isLoading && <span className="loading loading-spinner"></span>}
             {!isLoading && <FaPaperPlane className="h-5 w-5" />}
-          </button>
+          </Button>
         </form>
       </div>
     </div>
   );
-}
+});

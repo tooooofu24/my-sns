@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import { FC } from "react";
+import { ChatBubble } from "react-daisyui";
 
 import { MyAvatar } from "@/components/MyAvatar";
 import { TweetType } from "@/types/TweetType";
@@ -11,17 +11,17 @@ type BalloonProps = {
 export const Balloon: FC<BalloonProps> = ({ tweet }) => {
   const { text, isReply } = tweet;
   return (
-    <div className={clsx("chat", isReply ? "chat-end" : "chat-start")}>
+    <ChatBubble end={isReply}>
       {!isReply && (
-        <div className="chat-image avatar">
+        <ChatBubble.Avatar>
           <div className="w-9 rounded-full">
             <MyAvatar />
           </div>
-        </div>
+        </ChatBubble.Avatar>
       )}
-      <div className="chat-bubble flex items-center max-w-full">
+      <ChatBubble.Message className="max-w-full flex items-center">
         <p className="whitespace-pre-wrap break-all text-sm">{text}</p>
-      </div>
-    </div>
+      </ChatBubble.Message>
+    </ChatBubble>
   );
 };

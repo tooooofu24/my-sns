@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { ApiError } from "next/dist/server/api-utils";
+import { setTimeout } from "timers/promises";
 
 import { API_KEY, LINE_API_KEY } from "@/config";
 
@@ -7,6 +8,12 @@ const postHandler = async (
   req: NextApiRequest,
   res: NextApiResponse<object>
 ) => {
+  if (process.env.ENV === "local") {
+    await setTimeout(1000);
+    res.status(200).json({ message: "success" });
+    return;
+  }
+
   const { comment } = JSON.parse(req.body);
   if (!comment) {
     throw new ApiError(400, "comment is required");
