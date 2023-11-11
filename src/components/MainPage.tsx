@@ -1,11 +1,9 @@
-import { format } from "date-fns";
 import { NextPage } from "next";
 import Head from "next/head";
 import { useEffect, useRef } from "react";
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { Tweet } from "@/components/Tweet/Tweet";
 import { TweetWrapper } from "@/components/Tweet/TweetWrapper";
 import { TweetType } from "@/types/TweetType";
 
@@ -48,17 +46,7 @@ export const MainPage: NextPage<MainPageProps> = ({ tweets }) => {
       </Head>
       <>
         <Header />
-        <TweetWrapper>
-          <div />
-          {tweets.map((tweet, i) => {
-            const current = new Date(tweet.createdAt);
-            const prev = new Date(tweets[i - 1]?.createdAt ?? null);
-            const showDate =
-              format(current, "yyyy-MM-dd") != format(prev, "yyyy-MM-dd");
-            return <Tweet key={tweet.id} tweet={tweet} showDate={showDate} />;
-          })}
-          <div ref={ref} />
-        </TweetWrapper>
+        <TweetWrapper tweets={tweets} />
         <Footer />
       </>
     </>

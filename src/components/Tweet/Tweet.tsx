@@ -14,14 +14,22 @@ export const Tweet = ({ tweet, showDate }: TweetProps) => {
   return (
     <>
       {showDate && (
-        <div className="flex justify-center">
+        <div className="flex justify-center py-2">
           <Badge>
             {format(new Date(tweet.createdAt), "M月d日(E)", { locale: ja })}
           </Badge>
         </div>
       )}
-      {!tweet.isReply && <MyTweet tweet={tweet} />}
-      {tweet.isReply && <ReplyTweet tweet={tweet} />}
+      {!tweet.isReply && (
+        <div className="py-2">
+          <MyTweet tweet={tweet} />
+        </div>
+      )}
+      {tweet.isReply && (
+        <div className="py-2">
+          <ReplyTweet tweet={tweet} />
+        </div>
+      )}
     </>
   );
 };
