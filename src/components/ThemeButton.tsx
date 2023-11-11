@@ -11,7 +11,7 @@ export const ThemeButton = memo(() => {
   }, []);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTheme(e.target.checked ? "light" : "dark");
+    setTheme(e.target.checked ? "dark" : "light");
   };
 
   if (!mounted) return null;
@@ -26,7 +26,7 @@ export const ThemeButton = memo(() => {
         type="checkbox"
         aria-labelledby="ダークモード"
         onChange={onChange}
-        defaultChecked={theme === "light"}
+        defaultChecked={theme === "dark"}
       />
       <svg
         className="fill-current w-7 h-7 swap-on"
