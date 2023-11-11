@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { Modal } from "react-daisyui";
 
 import { ImageModal } from "@/components/Tweet/ImageModal";
@@ -9,17 +8,7 @@ import { ImageType } from "@/types/TweetType";
 export const Images = ({ images }: { images: ImageType[] }) => {
   const gridCols = images.length >= 3 ? "grid-cols-3" : "grid-cols-2";
 
-  const [show, setShow] = useState(false);
   const { Dialog, handleShow, handleHide } = Modal.useDialog();
-
-  useEffect(() => {
-    if (show) {
-      handleShow();
-    }
-    if (!show) {
-      handleHide();
-    }
-  }, [show]);
 
   return (
     <>
@@ -35,15 +24,13 @@ export const Images = ({ images }: { images: ImageType[] }) => {
               borderRadius: "0.35rem",
             }}
             className="cursor-pointer w-full aspect-[1/1] object-cover"
-            onClick={() => setShow(true)}
+            onClick={handleShow}
           />
         ))}
       </div>
-      {show && (
-        <Dialog>
-          <ImageModal images={images} onClose={() => setShow(false)} />
-        </Dialog>
-      )}
+      <Dialog>
+        <ImageModal images={images} onClose={handleHide} />
+      </Dialog>
     </>
   );
 };
