@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { SafeArea } from "@/components/SafeArea";
 import { TweetWrapper } from "@/components/Tweet/TweetWrapper";
 import { TweetType } from "@/types/TweetType";
 
@@ -47,6 +48,7 @@ export const MainPage: NextPage<MainPageProps> = ({ tweets }) => {
       <>
         <Header />
         <TweetWrapper tweets={tweets} />
+        <SafeArea />
         <Footer />
       </>
     </>

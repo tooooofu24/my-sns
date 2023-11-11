@@ -3,6 +3,7 @@ import { Button, Textarea } from "react-daisyui";
 import { FaPaperPlane } from "react-icons/fa6";
 import { useMutation } from "react-query";
 
+import { SafeArea } from "@/components/SafeArea";
 import { postComment } from "@/utils/postComment";
 
 export const Footer = memo(() => {
@@ -26,7 +27,7 @@ export const Footer = memo(() => {
   });
 
   return (
-    <div className="navbar bottom-0 fixed bg-base-100 z-10">
+    <div className="navbar bottom-0 fixed bg-base-100 z-10 ">
       <div className="container max-w-md mx-auto">
         <form className="flex w-full gap-1 items-center" onSubmit={onSubmit}>
           <Textarea
@@ -48,6 +49,7 @@ export const Footer = memo(() => {
           </Button>
         </form>
       </div>
+      <SafeArea />
     </div>
   );
 });
