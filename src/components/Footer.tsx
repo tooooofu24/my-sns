@@ -27,29 +27,30 @@ export const Footer = memo(() => {
   });
 
   return (
-    <div className="navbar bottom-0 fixed bg-base-100 z-10 ">
-      <div className="container max-w-md mx-auto">
-        <form className="flex w-full gap-1 items-center" onSubmit={onSubmit}>
-          <Textarea
-            bordered
-            className="flex-1"
-            placeholder="匿名でコメントできます！"
-            rows={1}
-            name="comment"
-            disabled={isLoading}
-          ></Textarea>
-          <Button
-            className="btn-ghost"
-            shape="circle"
-            type="submit"
-            aria-label="送信ボタン"
-            loading={isLoading}
-          >
-            {!isLoading && <FaPaperPlane className="h-5 w-5" />}
-          </Button>
-        </form>
-      </div>
-      <SafeArea />
+    <div className="navbar bottom-0 fixed bg-base-100 z-10">
+      <SafeArea>
+        <div className="container max-w-md mx-auto">
+          <form className="flex w-full gap-1 items-center" onSubmit={onSubmit}>
+            <Textarea
+              bordered
+              className="flex-1"
+              placeholder="匿名でコメントできます！"
+              rows={1}
+              name="comment"
+              disabled={isLoading}
+            ></Textarea>
+            <Button
+              className="btn-ghost"
+              shape="circle"
+              type="submit"
+              aria-label="送信ボタン"
+              loading={isLoading}
+            >
+              {!isLoading && <FaPaperPlane className="h-5 w-5" />}
+            </Button>
+          </form>
+        </div>
+      </SafeArea>
     </div>
   );
 });
