@@ -3,7 +3,6 @@ import { Button, Textarea } from "react-daisyui";
 import { FaPaperPlane } from "react-icons/fa6";
 import { useMutation } from "react-query";
 
-import { SafeArea } from "@/components/SafeArea";
 import { postComment } from "@/utils/postComment";
 
 export const Footer = memo(() => {
@@ -28,29 +27,27 @@ export const Footer = memo(() => {
 
   return (
     <div className="navbar bottom-0 fixed bg-base-100 z-10">
-      <SafeArea>
-        <div className="container max-w-md mx-auto">
-          <form className="flex w-full gap-1 items-center" onSubmit={onSubmit}>
-            <Textarea
-              bordered
-              className="flex-1"
-              placeholder="匿名でコメントできます！"
-              rows={1}
-              name="comment"
-              disabled={isLoading}
-            ></Textarea>
-            <Button
-              className="btn-ghost"
-              shape="circle"
-              type="submit"
-              aria-label="送信ボタン"
-              loading={isLoading}
-            >
-              {!isLoading && <FaPaperPlane className="h-5 w-5" />}
-            </Button>
-          </form>
-        </div>
-      </SafeArea>
+      <div className="container max-w-md mx-auto pb-[env(safe-area-inset-bottom)]">
+        <form className="flex w-full gap-1 items-center" onSubmit={onSubmit}>
+          <Textarea
+            bordered
+            className="flex-1"
+            placeholder="匿名でコメントできます！"
+            rows={1}
+            name="comment"
+            disabled={isLoading}
+          ></Textarea>
+          <Button
+            className="btn-ghost"
+            shape="circle"
+            type="submit"
+            aria-label="送信ボタン"
+            loading={isLoading}
+          >
+            {!isLoading && <FaPaperPlane className="h-5 w-5" />}
+          </Button>
+        </form>
+      </div>
     </div>
   );
 });
