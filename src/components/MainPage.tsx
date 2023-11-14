@@ -1,24 +1,19 @@
 import { NextPage } from "next";
 import Head from "next/head";
-import { useEffect, useRef } from "react";
+import { lazy, Suspense } from "react";
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { SafeArea } from "@/components/SafeArea";
-import { TweetWrapper } from "@/components/Tweet/TweetWrapper";
 import { TweetType } from "@/types/TweetType";
+
+const TweetWrapper = lazy(() => import("@/components/Tweet/TweetWrapper"));
 
 type MainPageProps = {
   tweets: TweetType[];
 };
 
 export const MainPage: NextPage<MainPageProps> = ({ tweets }) => {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    ref?.current?.scrollIntoView();
-  }, []);
-
   return (
     <>
       <Head>
@@ -47,7 +42,9 @@ export const MainPage: NextPage<MainPageProps> = ({ tweets }) => {
       </Head>
       <>
         <Header />
-        <TweetWrapper tweets={tweets} />
+        <Suspense fallback={null}>
+          <TweetWrapper tweets={tweets} />
+        </Suspense>
         <SafeArea />
         <Footer />
       </>

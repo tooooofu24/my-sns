@@ -31,3 +31,5 @@ const showDate = (tweets: TweetType[], index: number) => {
     format(currentDate, "yyyy-MM-dd") != format(prevDate, "yyyy-MM-dd");
   return showDate;
 };
+
+export default TweetWrapper;
