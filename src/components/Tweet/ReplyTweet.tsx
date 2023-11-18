@@ -6,10 +6,10 @@ import { Time } from "@/components/Tweet/Time";
 import { TweetType } from "@/types/TweetType";
 
 export const ReplyTweet = ({ tweet }: { tweet: TweetType }) => {
-  const { createdAt } = tweet;
+  const { publishedAt } = tweet;
   return (
     <div className="flex items-end gap-2 justify-end">
-      <Time>{format(new Date(createdAt), "H:mm", { locale: ja })}</Time>
+      <Time>{format(new Date(publishedAt), "H:mm", { locale: ja })}</Time>
       <div className="max-w-[80%]">
         <Balloon tweet={tweet} />
       </div>

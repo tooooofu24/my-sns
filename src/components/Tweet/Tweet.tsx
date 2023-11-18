@@ -16,7 +16,7 @@ export const Tweet = ({ tweet, showDate }: TweetProps) => {
       {showDate && (
         <div className="flex justify-center py-2">
           <Badge>
-            {format(new Date(tweet.createdAt), "M月d日(E)", { locale: ja })}
+            {format(new Date(tweet.publishedAt), "M月d日(E)", { locale: ja })}
           </Badge>
         </div>
       )}

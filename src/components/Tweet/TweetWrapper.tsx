@@ -25,8 +25,8 @@ export const TweetWrapper = ({ tweets }: TweetWrapperProps) => {
 const showDate = (tweets: TweetType[], index: number) => {
   const tweet = tweets[index];
   const prev = tweets[index - 1];
-  const currentDate = new Date(tweet.createdAt);
-  const prevDate = new Date(prev?.createdAt ?? null);
+  const currentDate = new Date(tweet.publishedAt);
+  const prevDate = new Date(prev?.publishedAt ?? null);
   const showDate =
     format(currentDate, "yyyy-MM-dd") != format(prevDate, "yyyy-MM-dd");
   return showDate;

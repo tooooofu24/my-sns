@@ -7,7 +7,7 @@ import { Time } from "@/components/Tweet/Time";
 import { TweetType } from "@/types/TweetType";
 
 export const MyTweet = ({ tweet }: { tweet: TweetType }) => {
-  const { createdAt } = tweet;
+  const { publishedAt } = tweet;
   return (
     <div className="flex gap-1 flex-col">
       {tweet.images?.length ? (
@@ -19,7 +19,7 @@ export const MyTweet = ({ tweet }: { tweet: TweetType }) => {
         <div className="max-w-[80%]">
           <Balloon tweet={tweet} />
         </div>
-        <Time>{format(new Date(createdAt), "H:mm", { locale: ja })}</Time>
+        <Time>{format(new Date(publishedAt), "H:mm", { locale: ja })}</Time>
       </div>
     </div>
   );

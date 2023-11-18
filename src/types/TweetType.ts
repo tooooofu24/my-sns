@@ -3,7 +3,7 @@ export type TweetType = {
   text: string;
   images?: ImageType[];
   isReply?: boolean;
-  createdAt: string;
+  publishedAt: string;
 };
 
 export type ImageType = {
