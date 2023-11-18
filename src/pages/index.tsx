@@ -25,12 +25,14 @@ export const getStaticProps = async () => {
 
   const data = await client.get({
     endpoint: "tweets",
-    queries: { orders: "createdAt", limit: 100 },
+    queries: { orders: "-createdAt", limit: 100 },
   });
+
+  const tweets = data.contents.toReversed();
 
   return {
     props: {
-      tweets: data.contents,
+      tweets,
     },
   };
 };
